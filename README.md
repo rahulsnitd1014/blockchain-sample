@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 ## Hyperledger Fabric Samples
@@ -25,3 +26,6 @@ Hyperledger Project source code files are made available under the Apache
 License, Version 2.0 (Apache-2.0), located in the [LICENSE](LICENSE) file.
 Hyperledger Project documentation files are made available under the Creative
 Commons Attribution 4.0 International License (CC-BY-4.0), available at http://creativecommons.org/licenses/by/4.0/.
+=======
+# blockchain-sample
+>>>>>>> 40b6f19e5658e0944ed66d7ed8ad0ccef91f8c8e
