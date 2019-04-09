@@ -1,0 +1,87 @@
+{
+    "FileHeader": {
+      "ISASenderID": "064765654",
+      "GSSenderID": "064765654",
+      "DocumentCode": "DPSI856"
+    },
+    "Header": {
+      "HeaderRecordShipmentInfo": {
+        "HdrPurposeCode": "00",
+        "ShipmentID": "21260007",
+        "TransactionDate": "20190322",
+        "TransactionTime": "023708",
+        "LadingQty": "1",
+        "NetWeight": "0.0",
+        "NetWeightUOM": "LB",
+        "GrossWeight": "0.0",
+        "GrossWeightUOM": "LB",
+        "TransportationMethod": "M",
+        "ActualShippedDate": "20190322",
+        "HDRShipToLocationInfo": {
+          "HDRShipToLocationName": "AlbertsonsLLC.MethuenProduce",
+          "HDRShipToLocationID": "0091372096229",
+          "HDRShipToLocationAddress1": "100DantonDrive",
+          "HDRShipToLocationCity": "Methuen",
+          "HDRShipToLocationState": "MA",
+          "HDRShipToLocationCountry": "USA"
+        },
+        "HDRShipFromLocationInfo": {
+          "HDRShipFromLocationID": "0647656540012",
+          "HDRShipFromLocationName": "T&AHolliste"
+        },
+        "HDRCarrierInfo": {
+          "HDRCarrierID": "SCB1"
+        },
+        "OrderDetail": {
+          "PONum": "420297",
+          "PODate": "20190322",
+          "ITNInternalOrderNum": "81422994",
+          "VendorOrderNum": "21260007",
+          "OrderBuyingPartyInfo": {
+            "OrderBuyingPartyID": "2324",
+            "OrderBuyingPartyName": "Safeway"
+          },
+          "OrderVendorInfo": {
+            "OrderVendorID": "064765654",
+            "OrderVendorName": "Tanimura&Antle"
+          },
+          "PalletDetail": {
+            "PalletLicensePlateNumber": "678765544444555449",
+            "PalletCaseQty": "23",
+            "PalletGrossWeight": "0.0",
+            "PalletGrossWeightUOM": "LB",
+            "PalletNetWeight": "0.0",
+            "PalletNetWeightUOM": "LB",
+            "PalletType": "4",
+            "PalletTierQty": "1",
+            "PalletBlockQty": "2",
+            "PalletUserID": "ta1@test.com",
+            "ItemCaseDetail": {
+              "ItemLineNum": "1",
+              "UPCQualifier": "UK",
+              "UPCID": "52427",
+              "VendorItemNum": "52427",
+              "PurchaserItemNum": "84450067",
+              "ItemDescription": "ONIONSREDSWEETITALIAN",
+              "ItemCountryOfOrigin": "MX",
+              "ItemShippedQty": "23",
+              "ItemQuantityUOM": "CA",
+              "ItemGrossWeight": "0.0",
+              "ItemGrossWeightUOM": "LB",
+              "ItemNetWeight": "0.0",
+              "ItemNetWeightUOM": "LB",
+              "LotDetail": {
+                "LotNum": "lot6",
+                "LotQty": "23",
+                "LotQtyUOM": "CA",
+                "LotExpirationDate": "20190323"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Footer": {
+      "TotalLineItemNum": "1"
+    }
+  }
