@@ -15,6 +15,7 @@ async function submitASN(poNumber:string, asnXML:string) {
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
+        console.log(`Wallet path: ${process.cwd()}`);
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
