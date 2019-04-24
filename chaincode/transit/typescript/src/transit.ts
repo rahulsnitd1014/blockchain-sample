@@ -3,6 +3,7 @@
  */
 
 import { Context, Contract } from 'fabric-contract-api';
+import { Iterators } from 'fabric-shim';
 import { asn } from './asn';
 import { AdvanceShipNotice } from './asn';
 
@@ -34,13 +35,13 @@ export class Transit extends Contract {
 
     public async createASN(ctx: Context, poNumber: string, asnXML: string, asnJson: string) {
         console.info('============= START : Create ASN ===========');
-        const advanceShipNotice : AdvanceShipNotice = JSON.parse(asnJson);
+        const advanceShipNotice: AdvanceShipNotice = JSON.parse(asnJson);
         const asn: asn = {
-            poNumber, 
-            asnXML,
-            asnJson,
             advanceShipNotice,
-            docType: 'asn'          
+            asnJson,
+            asnXML,
+            docType: 'asn',
+            poNumber,
         };
 
         await ctx.stub.putState(poNumber, Buffer.from(JSON.stringify(asn)));
@@ -63,6 +64,15 @@ export class Transit extends Contract {
         return poJson;
     }
 
+    public async POHistory(ctx: Context, poNumber: string): Promise<string> {
+        console.info('============= START : Get PO History ===========');
+        const history = [];
+        const historyIt  = await ctx.stub.getHistoryForKey(poNumber);
+        const resp =  await this.serializeHistoryData(history, historyIt);
+        console.info('============= END : Get PO History ===========');
+        return resp;
+    }
+
     public async createLocation(ctx: Context, locationId: string, locationJson: string): Promise<string> {
         console.info('============= START : Create Location ===========');
         await ctx.stub.putState(locationId, Buffer.from(JSON.stringify(locationJson)));
@@ -75,6 +85,25 @@ export class Transit extends Contract {
         await ctx.stub.putState(productId, Buffer.from(JSON.stringify(productJson)));
         console.info('============= END : Create Product ===========');
         return productJson;
+    }
+
+    private async serializeHistoryData(arr, obj: Iterators.HistoryQueryIterator) {
+        let flag = true;
+        while (flag) {
+            const response = await obj.next();
+            if (response.value && response.value.value && response.value.value.toString()) {
+                try {
+                    const tmp = JSON.parse(response.value.value.toString('utf8'));
+                    arr.push(tmp);
+                } catch (e) {
+                    arr.push(response.value.value.toString('utf8'));
+                }
+            }
+            if (response.done) {
+                flag = false;
+            }
+        }
+        return arr;
     }
 
 }
