@@ -43,11 +43,15 @@ export class Transit extends Contract {
             docType: 'asn'          
         };
 
+        console.info("Asn Json  asn:: "+asn.asnJson+"::::=====>>>"+asn.advanceShipNotice.FileHeader.GSSenderID+
+        "=====>>>"+asn.asnXML);
+
+
         await ctx.stub.putState(poNumber, Buffer.from(JSON.stringify(asn)));
         console.info('============= END : Create ASN ===========');
     }
 
-    public async queryASN(ctx: Context, poNumber: string): Promise<string> {
+    public async queryASN(ctx: Context,poNumber:string): Promise<string> {
         const asnAsBytes = await ctx.stub.getState(poNumber); // get the asn from chaincode state
         if (!asnAsBytes || asnAsBytes.length === 0) {
             throw new Error(`${poNumber} does not exist`);
