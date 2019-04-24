@@ -9,26 +9,26 @@ import { AdvanceShipNotice } from './asn';
 export class Transit extends Contract {
     public async initLedger(ctx: Context) {
         console.info('============= START : Initialize Ledger ===========');
-        // const cars: Car[] = [
-        //     {
-        //         color: 'blue',
-        //         make: 'Toyota',
-        //         model: 'Prius',
-        //         owner: 'Tomoko',
-        //     },
-        //     {
-        //         color: 'red',
-        //         make: 'Ford',
-        //         model: 'Mustang',
-        //         owner: 'Brad',
-        //     }
-        // ];
+        const cars: any[] = [
+            {
+                color: 'blue',
+                make: 'Toyota',
+                model: 'Prius',
+                owner: 'Tomoko',
+            },
+            // {
+            //     color: 'red',
+            //     make: 'Ford',
+            //     model: 'Mustang',
+            //     owner: 'Brad',
+            // },
+        ];
 
-        // for (let i = 0; i < cars.length; i++) {
-        //     cars[i].docType = 'car';
-        //     //await ctx.stub.putState('CAR' + i, Buffer.from(JSON.stringify(cars[i])));
-        //     console.info('Added <--> ', cars[i]);
-        // }
+        for (let i = 0; i < cars.length; i++) {
+            cars[i].docType = 'car';
+            await ctx.stub.putState('CAR' + i, Buffer.from(JSON.stringify(cars[i])));
+            console.info('Added <--> ', cars[i]);
+        }
         console.info('============= END : Initialize Ledger ===========');
     }
 
@@ -54,6 +54,27 @@ export class Transit extends Contract {
         }
         console.log(asnAsBytes.toString());
         return asnAsBytes.toString();
+    }
+
+    public async createPO(ctx: Context, poNumber: string, poJson: string): Promise<string> {
+        console.info('============= START : Create PO ===========');
+        await ctx.stub.putState(poNumber, Buffer.from(JSON.stringify(poJson)));
+        console.info('============= END : Create PO ===========');
+        return poJson;
+    }
+
+    public async createLocation(ctx: Context, locationId: string, locationJson: string): Promise<string> {
+        console.info('============= START : Create Location ===========');
+        await ctx.stub.putState(locationId, Buffer.from(JSON.stringify(locationJson)));
+        console.info('============= END : Create Location ===========');
+        return locationJson;
+    }
+
+    public async createProduct(ctx: Context, productId: string, productJson: string): Promise<string> {
+        console.info('============= START : Create Product ===========');
+        await ctx.stub.putState(productId, Buffer.from(JSON.stringify(productJson)));
+        console.info('============= END : Create Product ===========');
+        return productJson;
     }
 
 }
